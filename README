@@ -1,0 +1,10 @@
+Microcontroller Circular Buffer
+
+I looked everywhere for circular buffer implemenation suitable for a
+microcontroller.  The key limitation is the absence of a malloc so the
+circular buffer implementation would have to work with a statically
+declared memory space.  Additionally, it would have to work with bytes
+and nothing else.
+
+I wrote this from scratch for my needs.
+
