@@ -40,3 +40,31 @@ stopping you from doing the following:
 	cbuff_init(&d, buff+10, 10);
 ---------------------------------------------------------------------
 
+
+A quick note about the philosophy behind the cbuff_t struct.
+
+typedef struct
+{
+	unsigned char *buff;
+
+	int start;
+	int end;
+
+	int cnt;
+
+	int remain;
+
+	int size;
+} cbuff_t;
+
+The absolute minimum that is needed to manage a circular buffer is the
+start and end index, but this leaves the ambiguity of full and empty.
+(See the Wikipedia article for further explanation and a nice set of
+SVG graphics I made to demonstrate the circular buffer.) So you
+usually then need a flag indicating that state.  Instead of a flag, I
+opted to put in the counter directly.  Additionally, I put in the
+remain counter to avoid repeatedly computing how many bytes are free.
+Absolutely this is redundant information but I see it as an extreme of
+the space-time tradeoff: I am fine giving up the few extra bytes of
+RAM to avoid repeated calculations.
+
