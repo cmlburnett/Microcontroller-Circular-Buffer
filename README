@@ -8,3 +8,22 @@ and nothing else.
 
 I wrote this from scratch for my needs.
 
+Included is cbufftest.c that does some simple test cases.  You can
+also use it to see how to use it.
+
+Taken from cbufftest.c:
+---------------------------------------------------------------------
+	long ret;
+	unsigned char buff[12];
+	unsigned char hey[21];
+	cbuff_t c;
+
+	cbuff_init(&c, buff, 12);
+
+	cbuff_enqueue(&c, (unsigned char*)"Hello", 5);
+
+	ret = cbuff_dequeue1(&c);
+
+	ret = cbuff_dequeue(&c, hey, 20);
+---------------------------------------------------------------------
+
