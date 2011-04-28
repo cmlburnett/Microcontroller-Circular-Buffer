@@ -68,3 +68,12 @@ Absolutely this is redundant information but I see it as an extreme of
 the space-time tradeoff: I am fine giving up the few extra bytes of
 RAM to avoid repeated calculations.
 
+
+Finally, a note about the optimization I have done.  This was
+originally written for the ARM7TDMI architecture for the LPC 2138 chip
+by NXP/Philips.  I reviewed several iterations of objdump(1) trying to
+tweak some performance into the functions.  This optimization may be
+unnecessary but it was fun doing it.  Further more, it may totally
+flop optimally on anything but the ARM7TDMI and may not even be the
+most optimal.
+
