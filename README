@@ -27,3 +27,16 @@ Taken from cbufftest.c:
 	ret = cbuff_dequeue(&c, hey, 20);
 ---------------------------------------------------------------------
 
+Note that the size of the actual space declared need not be the same
+size initialized.  You can certainly call cbuff_init with a size
+less than that of the space it manages.  Really, there's nothing
+stopping you from doing the following:
+
+---------------------------------------------------------------------
+	unsigned char buff[20];
+	cbuff_t c, d;
+
+	cbuff_init(&c, buff, 10);
+	cbuff_init(&d, buff+10, 10);
+---------------------------------------------------------------------
+
